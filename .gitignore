@@ -208,3 +208,4 @@ __marimo__/
 
 # Pastas do projeto
 media/
+.vscode/settings.json
