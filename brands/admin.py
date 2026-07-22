@@ -7,3 +7,5 @@ class BrandAdmin(admin.ModelAdmin):
 
     fields = ['name', 'description',]
     search_fields = ['name',]
+    list_filter = ['active',]
+    readonly_fields = ['uuid', 'created_at', 'modified_at', 'criated_by']
