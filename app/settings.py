@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "brands",
     "categories",
+    "supliers",
 ]
 
 MIDDLEWARE = [
