@@ -18,7 +18,7 @@ class BaseModel(models.Model):
         'modificado em',
         auto_now=True,
     )
-    criated_by = models.ForeignKey(
+    created_by = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
         verbose_name='criado por',
