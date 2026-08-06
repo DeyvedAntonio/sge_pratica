@@ -16,5 +16,5 @@ class Brand(BaseModel):
 
     class Meta:
         ordering = ['name',]
-        verbose_name = 'Marca'
-        verbose_name_plural = 'Marcas'
+        verbose_name = 'marca'
+        verbose_name_plural = 'marcas'
