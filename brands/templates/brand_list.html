@@ -1,26 +1,46 @@
 {% extends 'base.html' %}
 
-{% block title%}
-SGE - Marcas
-{% endblock %}
+{% block title %}Marcas{% endblock %}
 
-<div class="table-responsive">
-    <table class="table table-striped table-borded">
-        <thead class="thead-dark">
-            <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>Descrição</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for brand in brands %}
-            <tr>
-                <td>{{ brand.id }}</td>
-                <td>{{ brand.name }}</td>
-                <td>{{ brand.description}}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
+{% block content %}
+
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h2">Marcas</h1>
+    {% if perms.brands.add_brand %}
+      <a href="{% url 'brand_create' %}" class="btn btn-primary">Adicionar Marca</a>
+    {% endif %}
+  </div>
+
+  <table class="table table-striped table-hover table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for brand in brands %}
+        <tr>
+          <td>{{ brand.id }}</td>
+          <td>{{ brand.name }}</td>
+          <td>
+            {% if perms.brands.view_brand %}
+                <i class="bi bi-eye-fill"></i>
+                <a href="#" class="btn btn-sm btn-info">Detalhes</a>
+            {% endif %}
+            {% if perms.brands.change_brand %}
+              <a href="#" class="btn btn-sm btn-warning">Editar</a>
+            {% endif %}
+            {% if perms.brands.delete_brand %}
+              <form action="#" method="post" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-sm btn-danger">Excluir</button>
+              </form>
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
