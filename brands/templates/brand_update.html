@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Marca - Editar
+{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <h3 class="display-6">
+        Editar Marca
+    </h3>
+    <div class="card">
+        <div class="card-body">
+            <form method="post" class="form">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">
+                    Salvar Marca
+                </button>
+            </form>
+        </div>
+    </div>
+    <a href="{% url 'brand-list %}" class="btn btn-secondary mt-">
+        cancelar e voltar para a lista de marcas
+    </a>
+</div>
+
+{% endblock %}
