@@ -3,6 +3,7 @@ from django.views.generic import (
     CreateView,
     DetailView,
     UpdateView,
+    DeleteView,
 )
 from django.urls import reverse_lazy
 from .forms import BrandForm
@@ -21,13 +22,15 @@ class BrandCreateView(CreateView):
     model = Brand
     form_class = BrandForm
     template_name = 'brand_create.html'
-    success_url = reverse_lazy('brand-list')
+    success_url = reverse_lazy('brand:brand-list')
 
 
 class BrandDetailView(DetailView):
 
     model = Brand
     template_name = 'brand_detail.html'
+    slug_field = 'uuid'
+    slug_url_kwarg = 'uuid'
 
 
 class BrandUpdateView(UpdateView):
@@ -35,4 +38,15 @@ class BrandUpdateView(UpdateView):
     model = Brand
     template_name = 'brand_update.html'
     form_class = BrandForm
-    success_url = reverse_lazy('brand-list')
+    success_url = reverse_lazy('brand:brand-list')
+    slug_field = 'uuid'
+    slug_url_kwarg = 'uuid'
+
+
+class BrandDeleteView(DeleteView):
+
+    model = Brand
+    template_name = 'brand_delete.html'
+    success_url = reverse_lazy('brand:brand-list')
+    slug_field = 'uuid'
+    slug_url_kwarg = 'uuid'

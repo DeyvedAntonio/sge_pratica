@@ -7,7 +7,7 @@
   <div class="d-flex justify-content-between align-items-center mb-3">
     <h1 class="h2">Marcas</h1>
     <div class="col-md-6">
-        <a href="{% url 'brand-create' %}" class="btn btn-success">
+        <a href="{% url 'brand:brand-create' %}" class="btn btn-success">
             <i class="bi bi-plus">
                 Nova Marca
             </i>
@@ -28,15 +28,16 @@
         <tr>
           <td>{{ brand.id }}</td>
           <td>{{ brand.name }}</td>
-          <td>
-              <a href="{% url 'brand-detail' brand.id %}" class="btn btn-sm btn-info">
+          <td class="align-items-center ">
+              <a href="{% url 'brand:brand-detail' brand.uuid %}" class="btn btn-outline-info btn-sm">
                 <i class="bi bi-eye-fill"></i>
               </a>
-              <a href="#" class="btn btn-sm btn-warning">Editar</a>
-              <form action="#" method="post" style="display:inline;">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-sm btn-danger">Excluir</button>
-              </form>
+              <a href="{% url 'brand:brand-update' brand.uuid %}" class="btn btn-outline-warning btn-sm">
+                <i class="bi bi-pencil"></i>
+              </a>
+              <a href="{% url 'brand:brand-delete' brand.uuid %}" class="btn btn-outline-danger btn-sm">
+                <i class="bi bi-trash"></i>
+              </a>
           </td>
         </tr>
       {% endfor %}
