@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Categorias{% endblock %}
+
+{% block content %}
+
+  <div class="d-flex justify-content-between mb-3">
+    <h1 class="h2">Categorias</h1>
+    <div class="col-md-6">
+        <a href="{% url 'category:category-create' %}" class="btn btn-success float-end">
+            <i class="bi bi-plus">
+                Nova Categoria
+            </i>
+        </a>
+    </div>
+  </div>
+
+  <table class="table table-striped table-hover table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for category in categories %}
+        <tr>
+          <td>{{ category.id }}</td>
+          <td>{{ category.name }}</td>
+          <td class="gap-3">
+              <a href="{% url 'category:category-detail' category.uuid %}" class="btn btn-outline-info btn-sm">
+                <i class="bi bi-eye-fill"></i>
+              </a>
+              <a href="{% url 'category:category-update' category.uuid %}" class="btn btn-outline-warning btn-sm">
+                <i class="bi bi-pencil"></i>
+              </a>
+              <a href="{% url 'category:category-delete' category.uuid %}" class="btn btn-outline-danger btn-sm">
+                <i class="bi bi-trash"></i>
+              </a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% include 'components/_pagination.html' %}
+{% endblock %}
