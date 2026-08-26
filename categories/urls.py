@@ -1,4 +1,4 @@
-from django.contrib.urls import path
+from django.urls import path
 from .views import (
     CategoryCreateView,
     CategoryDeleteView,
@@ -9,7 +9,7 @@ from .views import (
 
 app_name = 'category'
 
-urlspatterns = [
+urlpatterns = [
     path(
         'list/',
         CategoryListView.as_view(),
@@ -21,12 +21,12 @@ urlspatterns = [
         name='category-create',
     ),
     path(
-        '<str: uuid>/delete/',
+        '<str:uuid>/delete/',
         CategoryDeleteView.as_view(),
         name='category-delete',
     ),
     path(
-        '<str: uuid>/detail/',
+        '<str:uuid>/detail/',
         CategoryDetailView.as_view(),
         name='category-detail',
     ),
