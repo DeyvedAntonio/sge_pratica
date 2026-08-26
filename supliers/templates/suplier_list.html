@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Fornecedores{% endblock %}
+
+{% block content %}
+
+  <div class="d-flex justify-content-between mb-3">
+    <h1 class="h2">Fornecedores</h1>
+    <div class="col-md-6">
+        <a href="{% url 'suplier:suplier-create' %}" class="btn btn-success float-end">
+            <i class="bi bi-plus">
+                Novo Fornecedor
+            </i>
+        </a>
+    </div>
+  </div>
+
+  <table class="table table-striped table-hover table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for suplier in supliers %}
+        <tr>
+          <td>{{ suplier.id }}</td>
+          <td>{{ suplier.name }}</td>
+          <td class="gap-3">
+              <a href="{% url 'suplier:suplier-detail' suplier.uuid %}" class="btn btn-outline-info btn-sm">
+                <i class="bi bi-eye-fill"></i>
+              </a>
+              <a href="{% url 'suplier:suplier-update' suplier.uuid %}" class="btn btn-outline-warning btn-sm">
+                <i class="bi bi-pencil"></i>
+              </a>
+              <a href="{% url 'suplier:suplier-delete' suplier.uuid %}" class="btn btn-outline-danger btn-sm">
+                <i class="bi bi-trash"></i>
+              </a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% include 'components/_pagination.html' %}
+{% endblock %}
