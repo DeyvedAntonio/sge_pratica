@@ -24,3 +24,5 @@ class InflowAdmin(admin.ModelAdmin):
         'product',
         'description',
     ]
+    list_filter = ['active',]
+    readonly_fields = ['uuid', 'created_at', 'modified_at', 'created_by']
