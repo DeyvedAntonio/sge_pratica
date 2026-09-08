@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Entrada - Detalhes
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h3 class="display-6">
+        Detalhes da Entrada
+    </h3>
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">
+                {{ object.suplier }}
+            </h3>
+            <h3 class="card-title">
+                {{ object.product }}
+            </h3>
+            <p class="card-text">
+                {{ object.quantity }}
+            </p>
+            <p class="card-text">
+                {{ object.description }}
+            </p>
+        </div>
+    </div>
+    <div>
+        <a href="{% url 'inflow:inflow-list' %}" class="btn btn-secondary mt-3">
+            <i class="bi bi-arrow-left-circle"></i> Voltar para a lista de Marcas
+        </a>
+    </div>
+</div>
+{% endblock %}
