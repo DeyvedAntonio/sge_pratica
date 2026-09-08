@@ -1,4 +1,5 @@
 from django import forms
+from django.core.exceptions import ValidationError
 from .models import Outflow
 
 
@@ -18,7 +19,7 @@ class OutflowForm(forms.ModelForm):
             'quantity': forms.NumberInput(attrs={
                 'class': 'form-control',
             }),
-            'description': forms.TextArea(attrs={
+            'description': forms.Textarea(attrs={
                 'class': 'form-control',
                 'row': 3,
             }),

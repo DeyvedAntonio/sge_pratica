@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Saídas{% endblock %}
+
+{% block content %}
+
+  <div class="d-flex justify-content-between mb-3">
+    <h1 class="h2">Saídas</h1>
+    <div class="col-md-6">
+        <a href="{% url 'outflow:outflow-create' %}" class="btn btn-success float-end">
+            <i class="bi bi-plus">
+                Nova Saída
+            </i>
+        </a>
+    </div>
+  </div>
+
+  <table class="table table-striped table-hover table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Produto</th>
+        <th scope="col">Quantidade</th>
+        <th scope="col">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for outflow in outflows %}
+        <tr>
+          <td>{{ outflow.id }}</td>
+          <td>{{ outflow.product }}</td>
+          <td>{{ outflow.quantity }}</td>
+          <td class="gap-3">
+              <a href="{% url 'outflow:outflow-detail' outflow.uuid %}" class="btn btn-outline-info btn-sm">
+                <i class="bi bi-eye-fill"></i>
+              </a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% include 'components/_pagination.html' %}
+{% endblock %}

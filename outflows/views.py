@@ -8,6 +8,7 @@ from .forms import OutflowForm
 class OutflowListView(ListView):
 
     model = Outflow
+    template_name = 'outflow_list.html'
     paginate_by = 10
     context_object_name = 'outflows'
 
@@ -15,6 +16,7 @@ class OutflowListView(ListView):
 class OutflowCreateView(CreateView):
 
     model = Outflow
+    template_name = 'outflow_create.html'
     form_class = OutflowForm
     success_url = reverse_lazy('outflow-list')
 
@@ -22,4 +24,6 @@ class OutflowCreateView(CreateView):
 class OutflowDetailView(DetailView):
 
     model = Outflow
-    context_object_name = 'outflows'
+    template_name = 'outflow_detail.html'
+    slug_field = 'uuid'
+    slug_url_kwarg = 'uuid'
