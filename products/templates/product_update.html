@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Produto - Editar
+{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <h3 class="display-6">
+        Editar Produto
+    </h3>
+    <div class="card">
+        <div class="card-body">
+            <form method="post" class="form">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">
+                    Salvar Produto
+                </button>
+            </form>
+        </div>
+    </div>
+    <a href="{% url 'product:product-list' %}" class="btn btn-secondary mt-3">
+        <i class="bi bi-arrow-left-circle"></i> Cancelar e voltar para a lista de Produtos
+    </a>
+</div>
+
+{% endblock %}
