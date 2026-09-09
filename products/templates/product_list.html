@@ -6,6 +6,34 @@
 
   <div class="d-flex justify-content-between mb-3">
     <h1 class="h2">Produtos</h1>
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <form method="get" action="{% url 'product:product-list' %}">
+          <div class="input-group">
+            <select name="category" id="category">
+              <option value="" {% if not request.get.category %} selected {% endif %}>
+                Todas as Categorias
+              </option>
+              {% for category in categories %}
+              <option value="{{ category.id }}">
+                {{ category.name }}
+              </option>
+              {% endfor %}
+            </select>
+            <select name="brand" id="brand">
+              <option value="" {% if not request.get.brand %} selected {% endif %}>
+                Todas as Marcas
+              </option>
+              {% for brand in brands %}
+              <option value="{{ brand.id }}">
+                {{ brand.name }}
+              </option>
+              {% endfor %}
+            </select>
+          </div>
+        </form>
+      </div>
+    </div>
     <div class="col-md-6">
         <a href="{% url 'outflow:outflow-create' %}" class="btn btn-success float-end">
             <i class="bi bi-plus">

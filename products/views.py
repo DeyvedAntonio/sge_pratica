@@ -3,6 +3,8 @@ from django.urls import reverse_lazy
 
 from .models import Product
 from .forms import ProductForm
+from brands.models import Brand
+from categories.models import Category
 
 
 class ProductCreateView(CreateView):
@@ -43,3 +45,9 @@ class ProductListView(ListView):
     template_name = 'product_list.html'
     context_object_name = 'products'
     paginate_by = 15
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['categories'] = Category.objects.all()
+        context['brands'] = Brand.objects.all()
+        return context
