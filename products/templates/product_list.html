@@ -8,6 +8,17 @@
     <h1 class="h2">Produtos</h1>
     <div class="row mb-3">
       <div class="col-md-6">
+        <form action="{% url 'product:product-list' %}" method="get">
+          <div class="input-group">
+            <input type="text" name="title" placeholder="Produto">
+            <input type="text" name="serie_number" placeholder="Número de Série">
+            <button class="btn btn-primary">
+              <i class="bi bi-search"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-6">
         <form method="get" action="{% url 'product:product-list' %}">
           <div class="input-group">
             <select name="category" id="category">
