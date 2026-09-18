@@ -8,7 +8,7 @@
       <div class="collapse d-sm-block" id="menuCollapse">
         <ul class="nav flex-column align-items-start" id="menu">
             <li>
-              <a href="#" class="nav-link px-0 align-middle">
+              <a href="{% url 'home' %}" class="nav-link px-0 align-middle">
                 <i class="bi bi-speedometer2 fs-4"></i>
                 <span class="ms-1">Dashboard</span>
               </a>
@@ -32,19 +32,19 @@
               </a>
             </li>
             <li>
-              <a href="#" class="nav-link px-0 align-middle">
+              <a href="{% url 'product:product-list' %}" class="nav-link px-0 align-middle">
                 <i class="bi bi-box-seam fs-4"></i>
                 <span class="ms-1">Produtos</span>
               </a>
             </li>
             <li>
-              <a href="#" class="nav-link px-0 align-middle">
+              <a href="{% url 'inflow:inflow-list' %}" class="nav-link px-0 align-middle">
                 <i class="bi bi-arrow-down-left-square fs-4"></i>
                 <span class="ms-1">Entradas</span>
               </a>
             </li>
             <li>
-              <a href="#" class="nav-link px-0 align-middle">
+              <a href="{% url 'outflow:outflow-list' %}" class="nav-link px-0 align-middle">
                 <i class="bi bi-arrow-up-right-square fs-4"></i>
                 <span class="ms-1">Saídas</span>
               </a>
